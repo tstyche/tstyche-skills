@@ -16,10 +16,10 @@ Use this skill when adding TSTyche to a project, changing `tstyche.json` or TSCo
 
 ## Non-obvious behavior
 
-- CLI options override config-file options. Relative config paths are resolved from the config file; other selection paths are relative to the current working directory as documented.
-- `testFileMatch` and `fixtureFileMatch` are case-insensitive glob lists. Brace expansion is supported; dot directories and `node_modules` require explicit patterns.
+- CLI options override config-file options. A relative `--config` path resolves from the process working directory, while path-valued options inside the config file resolve from that file's directory. Other selection paths are relative to the current working directory as documented.
+- `testFileMatch` and `fixtureFileMatch` are case-sensitive glob lists. Brace expansion is supported; dot directories and `node_modules` require explicit patterns.
 - `tsconfig` supports `findup` (default), `baseline`, a path, or inline JSON. A file not included in the selected TSConfig falls back to baseline compiler options.
-- The default target `*` uses the installed TypeScript module and falls back to the latest available version. Store commands fetch/list/prune/update cached TypeScript packages.
+- The default target `*` uses the installed TypeScript module and falls back to the latest available version. `--fetch` retrieves requested TypeScript packages, `--list` prints supported versions, `--prune` removes all fetched versions, and `--update` refreshes registry metadata.
 - `--only` and `--skip` filter literal helper names case-insensitively; skip wins over only. `--watch` watches config and test files and depends on filesystem events.
 - `checkDeclarationFiles`, `checkSuppressedErrors`, `rejectAnyType`, and `rejectNeverType` default to `true`; `reporters` defaults to `list,summary`; `failFast`, `quiet`, and `verbose` default to `false`.
 

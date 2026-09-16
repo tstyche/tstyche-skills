@@ -34,3 +34,5 @@ jobs:
             done < <(grep -oE '\]\((references/[^)]+)\)' "$skill_file" | sed -E 's/.*\((references\/[^)]+)\)/\1/')
           done < <(find skills -mindepth 2 -name SKILL.md)
           exit $failed
+      - name: Check installer discovery
+        run: npx --yes skills add . --list

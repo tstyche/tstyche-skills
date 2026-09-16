@@ -10,7 +10,7 @@ import tstyche from "tstyche/tag";
 await tstyche`--quiet --root ${fixtureRoot} --target 5.8`;
 ```
 
-`tstyche/tag` builds a command-line argument string with `String.raw`, splits on whitespace, invokes `Cli.run`, and rejects with an `Error` when the exit code is greater than zero. Quote or avoid substitutions containing spaces because interpolation is command-line text, not an argv array.
+`tstyche/tag` builds command-line text with `String.raw`, splits it on whitespace, invokes `Cli.run`, and rejects with an `Error` when the exit code is greater than zero. Shell quoting and escaping are not parsed, so quote characters do not protect spaces. Avoid substitutions containing whitespace; use `Cli.run` with an explicit argument array when an argument must contain it.
 
 ## API barrel
 

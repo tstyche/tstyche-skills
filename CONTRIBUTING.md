@@ -35,15 +35,18 @@ done
 
 Confirm every relative reference link in a `SKILL.md` resolves:
 
-```sh
+```bash
+failed=0
 while IFS= read -r skill_file; do
   skill_dir="${skill_file%/SKILL.md}"
-  grep -oE '\]\((references/[^)]+)\)' "$skill_file" \
-    | sed -E 's/.*\((references\/[^)]+)\)/\1/' \
-    | while IFS= read -r reference; do
-        test -f "$skill_dir/$reference" || { echo "Missing: $skill_dir/$reference"; exit 1; }
-      done
+  while IFS= read -r reference; do
+    if [ ! -f "$skill_dir/$reference" ]; then
+      echo "Missing: $skill_dir/$reference"
+      failed=1
+    fi
+  done < <(grep -oE '\]\((references/[^)]+)\)' "$skill_file" | sed -E 's/.*\((references\/[^)]+)\)/\1/')
 done < <(find skills -mindepth 2 -name SKILL.md)
+exit "$failed"
 ```
 
 Smoke-test multi-agent discovery without copying any files:
