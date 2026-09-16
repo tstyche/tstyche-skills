@@ -1,0 +1,36 @@
+name: Validate skills
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Validate each skill
+        run: |
+          set -e
+          for skill in skills/*/; do
+            echo "Validating $skill"
+            npx --yes skills-ref validate "$skill"
+          done
+      - name: Check reference links
+        run: |
+          set -e
+          failed=0
+          while IFS= read -r skill_file; do
+            skill_dir="${skill_file%/SKILL.md}"
+            while IFS= read -r reference; do
+              if [ ! -f "$skill_dir/$reference" ]; then
+                echo "::error file=$skill_file::Broken reference link: $reference"
+                failed=1
+              fi
+            done < <(grep -oE '\]\((references/[^)]+)\)' "$skill_file" | sed -E 's/.*\((references\/[^)]+)\)/\1/')
+          done < <(find skills -mindepth 2 -name SKILL.md)
+          exit $failed
