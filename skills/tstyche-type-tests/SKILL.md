@@ -1,6 +1,6 @@
 ---
 name: tstyche-type-tests
-description: Write, review, migrate, and debug TSTyche TypeScript type tests, including assertions, helpers, directives, inference-sensitive cases, and compatibility tests.
+description: Use when writing, reviewing, migrating, or debugging `.tst.*` files, TSTyche assertions or testing helpers, type-level API compatibility cases, or type-test failures.
 ---
 
 # TSTyche type tests

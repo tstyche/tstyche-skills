@@ -33,6 +33,17 @@ Alternatively, copy a directory from `skills/` into the skills directory
 documented by your agent. Keep the whole directory together so its
 `references/` remain available to the agent.
 
+## Updating
+
+Keep installed skills current with:
+
+```sh
+npx skills update
+```
+
+This re-runs the install against the latest version of every skill installed
+from this repository.
+
 ## Format
 
 Each directory under `skills/` is a self-contained skill with:
@@ -44,3 +55,7 @@ Each directory under `skills/` is a self-contained skill with:
 
 This layout follows the open Agent Skills specification and does not require
 agent-specific metadata.
+
+## License
+
+[MIT](LICENSE) © TSTyche.

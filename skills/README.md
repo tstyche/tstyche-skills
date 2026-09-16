@@ -1,6 +1,6 @@
 # TSTyche Agent Skills
 
-These repository-local skills help an AI agent work with TSTyche's type-test,
+The TSTyche skills bundled in this repository help an AI agent work with TSTyche's type-test,
 project-setup, and programmatic-integration surfaces.
 
 ## Skill map

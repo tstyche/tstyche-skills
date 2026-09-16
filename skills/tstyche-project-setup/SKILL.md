@@ -1,6 +1,6 @@
 ---
 name: tstyche-project-setup
-description: Install, configure, run, and troubleshoot TSTyche projects, including test layout, TSConfig, CLI, TypeScript version matrices, templates, watch mode, environment, and CI.
+description: Use when adding TSTyche to a project, editing `tstyche.json` or the test TSConfig, choosing CLI flags, configuring watch/CI/templates, or diagnosing environment, version, or store behavior.
 ---
 
 # TSTyche project setup

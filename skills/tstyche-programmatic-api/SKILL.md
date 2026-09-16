@@ -1,6 +1,6 @@
 ---
 name: tstyche-programmatic-api
-description: Integrate TSTyche from JavaScript/TypeScript code, use the tag and API entrypoints, build custom reporters, consume events/results, or extend runner integrations safely.
+description: Use when embedding TSTyche from `tstyche/tag` or `tstyche/api`, building a custom reporter, consuming runner events or results, or extending programmatic integrations.
 ---
 
 # TSTyche programmatic API
