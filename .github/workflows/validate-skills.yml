@@ -13,13 +13,11 @@ jobs:
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24
+          cache: npm
+      - name: Install validation tools
+        run: npm ci
       - name: Validate each skill
-        run: |
-          set -e
-          for skill in skills/*/; do
-            echo "Validating $skill"
-            npx --yes skills-ref validate "$skill"
-          done
+        run: npm run validate:skills
       - name: Check reference links
         run: |
           set -e
@@ -35,4 +33,4 @@ jobs:
           done < <(find skills -mindepth 2 -name SKILL.md)
           exit $failed
       - name: Check installer discovery
-        run: npx --yes skills add . --list
+        run: npm run validate:discovery

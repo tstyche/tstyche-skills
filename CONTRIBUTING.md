@@ -25,12 +25,16 @@ skills/
 
 ## Validate locally
 
+Install the pinned validation tools:
+
+```sh
+npm ci
+```
+
 Run the official spec validator on every skill:
 
 ```sh
-for skill in skills/*/; do
-  npx --yes skills-ref validate "$skill"
-done
+npm run validate:skills
 ```
 
 Confirm every relative reference link in a `SKILL.md` resolves:
@@ -52,7 +56,7 @@ exit "$failed"
 Smoke-test multi-agent discovery without copying any files:
 
 ```sh
-npx skills add . --list
+npm run validate:discovery
 ```
 
 The same checks run in CI on every pull request and push to `main`.
