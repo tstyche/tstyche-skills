@@ -16,7 +16,7 @@ Use this skill when adding TSTyche to a project, changing `tstyche.json` or TSCo
 
 ## Non-obvious behavior
 
-- CLI options override config-file options. A relative `--config` path resolves from the process working directory, while path-valued options inside the config file resolve from that file's directory. Other selection paths are relative to the current working directory as documented.
+- CLI options override config-file options. A relative `--config` path resolves from the process working directory, while path-valued options inside the config file resolve from that file's directory. Other selection paths — including `testFileMatch`, `fixtureFileMatch`, and positional search strings — are resolved relative to the effective `--root` (the process working directory when `--root` is omitted), not the process CWD once `--root` is set.
 - `testFileMatch` and `fixtureFileMatch` are case-sensitive glob lists. Brace expansion is supported; dot directories and `node_modules` require explicit patterns.
 - `tsconfig` supports `findup` (default), `baseline`, a path, or inline JSON. A file not included in the selected TSConfig falls back to baseline compiler options.
 - The default target `*` uses the installed TypeScript module and falls back to the latest available version. `--fetch` retrieves requested TypeScript packages, `--list` prints supported versions, `--prune` removes all fetched versions, and `--update` refreshes registry metadata.

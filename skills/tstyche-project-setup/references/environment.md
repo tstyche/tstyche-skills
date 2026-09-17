@@ -1,8 +1,8 @@
 # Environment variables
 
-The live reference is https://tstyche.org/reference/environment. The source authority is `source/environment/Environment.ts`; use it when names or aliases differ from the website.
+The live reference is https://tstyche.org/reference/environment. In a TSTyche source checkout, `source/environment/Environment.ts` is the authoritative source; in an installed package, the website and resolved config are the source of truth.
 
-Values are not validated by TSTyche: booleans are true for any non-empty value, numbers use numeric parsing, and strings pass through. Environment-variable presence controls precedence, so an explicitly empty boolean override resolves to `false` and still suppresses its fallback. `--showConfig` prints the resolved config and environment options, but not which raw variable or alias produced each value; inspect the process environment when that provenance matters.
+Values are not validated by TSTyche: booleans are true for any non-empty value, numbers use numeric parsing, and strings generally pass through — but `TSTYCHE_STORE_PATH` is normalized to an absolute path and `TSTYCHE_TYPESCRIPT_MODULE` is resolved as a module specifier before use. Environment-variable presence controls precedence, so an explicitly empty boolean override resolves to `false` and still suppresses its fallback. `--showConfig` prints the resolved config and environment options, but not which raw variable or alias produced each value; inspect the process environment when that provenance matters.
 
 | Variable | Current source behavior |
 | --- | --- |

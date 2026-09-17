@@ -1,6 +1,6 @@
 # Configuration file and schema
 
-The live reference is https://tstyche.org/reference/config-file. The checked-in schema is `schemas/config.json`; declarations are in `source/config/types.ts` and defaults in `source/config/defaultOptions.ts`.
+The live reference is https://tstyche.org/reference/config-file. The installed schema at `./node_modules/tstyche/schemas/config.json` is the local source of truth; the `Config` and `Options` declarations from `tstyche/api` are the authoritative types for programmatic config. The `source/config/types.ts` and `source/config/defaultOptions.ts` paths are only available in a TSTyche source checkout.
 
 ## Shape and precedence
 

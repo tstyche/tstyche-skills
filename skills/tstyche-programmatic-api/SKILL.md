@@ -15,7 +15,7 @@ Use this skill for `tstyche/tag`, `tstyche/api`, custom reporters, embedded runs
 
 ## Safe integration workflow
 
-1. Read the programmatic reference and inspect `source/api.ts`, `source/tag.ts`, and the relevant public declaration/type file.
+1. Read the programmatic reference and verify signatures against the installed public declarations in `tstyche/api` (and `tstyche/tag`'s default export). Use the `source/` paths (`source/api.ts`, `source/tag.ts`, `source/runner/Runner.ts`) only when working inside a TSTyche source checkout — the published package ships `dist/**/*` and `schemas/*.json`, not `source/`.
 2. Give embedded runs an explicit `--root` and, when needed, `--config`, `--tsconfig`, `--target`, `--reporters`, and `--quiet` so they do not depend on the caller's working directory or TTY.
 3. For custom reporters, export a default class with a constructor receiving `ResolvedConfig` and an `on(event)` method accepting `ReporterEvent`. Handle only events needed by the integration and keep output side effects intentional.
 4. Subscribe to the typed event union and narrow event names before reading payloads. Always clean up or use the runner lifecycle so reporters/handlers do not leak between runs.

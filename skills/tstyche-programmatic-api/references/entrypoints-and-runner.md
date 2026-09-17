@@ -1,6 +1,6 @@
 # Entrypoints and runner patterns
 
-The live references are https://tstyche.org/guides/programmatic-usage and https://tstyche.org/reference/testing-api. Public entrypoint metadata is in `package.json`; implementations are `source/tag.ts`, `source/api.ts`, and `source/runner/Runner.ts`.
+The live references are https://tstyche.org/guides/programmatic-usage and https://tstyche.org/reference/testing-api. Public entrypoint metadata is in `package.json`; the `tstyche/tag` default export, the `tstyche/api` barrel, and the `Runner` class are the surfaces to verify against the installed declarations. The `source/tag.ts`, `source/api.ts`, and `source/runner/Runner.ts` paths are only available in a TSTyche source checkout — the published package ships `dist/**/*` and `schemas/*.json`, not `source/`.
 
 ## Tagged template
 

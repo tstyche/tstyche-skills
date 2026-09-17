@@ -1,6 +1,6 @@
 # Reporters, events, and results
 
-The live reporter guide is https://tstyche.org/guides/reporters. Source authorities are `source/reporters/types.ts`, `source/events/types.ts`, and `source/result/types.ts`.
+The live reporter guide is https://tstyche.org/guides/reporters. In an installed package, verify against the `Reporter`, `ReporterEvent`, and `Result` types re-exported from `tstyche/api`; in a TSTyche source checkout, `source/reporters/types.ts`, `source/events/types.ts`, and `source/result/types.ts` are the authoritative sources.
 
 ## Custom reporter
 
