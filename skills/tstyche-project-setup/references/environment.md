@@ -14,8 +14,3 @@ Values are not validated by TSTyche: booleans are true for any non-empty value, 
 | `TSTYCHE_NPM_REGISTRY` | registry base URL; default npm registry |
 | `TSTYCHE_STORE_PATH` | cache directory, resolved to an absolute path |
 | `TSTYCHE_TYPESCRIPT_MODULE` | module/path for the active TypeScript implementation |
-| `CI` | non-empty marks CI mode |
-
-Store defaults vary by platform and `XDG_DATA_HOME`/`LocalAppData`. Keep CI deterministic by setting a writable store path and disabling interactive/color output where needed.
-
-The source retains `TSTYCHE_TIMEOUT` as a legacy fallback, while the website documents the more specific fetch variables. Treat this as compatibility-sensitive and update the skill when source behavior changes.
