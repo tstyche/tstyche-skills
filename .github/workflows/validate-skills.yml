@@ -18,19 +18,32 @@ jobs:
         run: npm ci
       - name: Validate each skill
         run: npm run validate:skills
-      - name: Check reference links
+      - name: Check local Markdown links
         run: |
-          set -e
-          failed=0
-          while IFS= read -r skill_file; do
-            skill_dir="${skill_file%/SKILL.md}"
-            while IFS= read -r reference; do
-              if [ ! -f "$skill_dir/$reference" ]; then
-                echo "::error file=$skill_file::Broken reference link: $reference"
-                failed=1
-              fi
-            done < <(grep -oE '\]\((references/[^)]+)\)' "$skill_file" | sed -E 's/.*\((references\/[^)]+)\)/\1/')
-          done < <(find skills -mindepth 2 -name SKILL.md)
-          exit $failed
+          node --input-type=module <<'NODE'
+          import { existsSync, readFileSync, readdirSync } from "node:fs";
+          import { dirname, join, resolve } from "node:path";
+
+          function* markdownFiles(directory) {
+            for (const entry of readdirSync(directory, { withFileTypes: true })) {
+              const file = join(directory, entry.name);
+              if (entry.isDirectory()) yield* markdownFiles(file);
+              else if (file.endsWith(".md")) yield file;
+            }
+          }
+
+          let broken = 0;
+          for (const file of ["README.md", ...markdownFiles("skills")]) {
+            for (const [, href] of readFileSync(file, "utf8").matchAll(/\]\(([^)]+)\)/g)) {
+              if (/^(?:[a-z][a-z0-9+.-]*:|#|\/)/i.test(href)) continue;
+              const target = href.split("#")[0];
+              if (target && !existsSync(resolve(dirname(file), decodeURIComponent(target)))) {
+                console.error(`::error file=${file}::Broken local link: ${href}`);
+                broken++;
+              }
+            }
+          }
+          if (broken) process.exit(1);
+          NODE
       - name: Check installer discovery
         run: npm run validate:discovery

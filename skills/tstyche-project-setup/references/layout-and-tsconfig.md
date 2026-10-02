@@ -28,4 +28,4 @@ Shared `__tests__` directories and tests next to source files are supported. If 
 
 Adjust relative paths to the actual directory. `types: []` prevents ambient `@types/*` packages from changing the test environment. Add `jsx` and decorator-related options only when those features are tested.
 
-TSTyche reads the selected TSConfig through `findup` by default; `baseline` deliberately skips project config. Confirm the actual config with `--showConfig` and the output's `uses TypeScript ... with ...` line.
+TSTyche reads the selected TSConfig through `findup` by default; `baseline` deliberately skips project config. Use `--showConfig` to inspect the resolved options, then run a test and check its `uses TypeScript ... with ...` line for the selected TSConfig.

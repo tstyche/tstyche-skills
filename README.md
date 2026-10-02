@@ -13,6 +13,10 @@ one vendor's repository layout.
   events, and results from JavaScript or TypeScript.
 - `tstyche-migrate-from-tsd`: migrate tsd tests, assertions, configuration,
   scripts, and CI to TSTyche without losing test intent.
+- `tstyche-troubleshooting`: diagnose failing TSTyche runs, embedded
+  integrations, target/version resolution, and environment or store issues.
+- `tstyche-project-templates`: author fixture projects, CI matrix recipes,
+  and generated/template test files.
 
 See [skills/README.md](skills/README.md) for the skill map.
 

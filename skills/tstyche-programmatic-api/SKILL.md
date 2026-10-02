@@ -26,3 +26,7 @@ Use this skill for `tstyche/tag`, `tstyche/api`, custom reporters, embedded runs
 - Entry points and runner/tag patterns: [references/entrypoints-and-runner.md](references/entrypoints-and-runner.md)
 - Reporter, event, and result contracts: [references/reporters-events-results.md](references/reporters-events-results.md)
 - Config/CLI embedding and failure handling: [references/embedding-and-failures.md](references/embedding-and-failures.md)
+
+## If something is wrong
+
+Diagnose first. When an embedded `Runner.run` rejects, a watcher leaks, a custom reporter ignores events, or `tstyche/tag` returns when it should reject, load [tstyche-troubleshooting](../tstyche-troubleshooting/SKILL.md) and start with [references/embedded-run-failures.md](../tstyche-troubleshooting/references/embedded-run-failures.md). For reproducible fixture projects that the integration can target, load [tstyche-project-templates](../tstyche-project-templates/SKILL.md) → [references/fixture-recipe.md](../tstyche-project-templates/references/fixture-recipe.md).

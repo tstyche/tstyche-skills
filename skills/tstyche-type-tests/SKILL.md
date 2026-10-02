@@ -31,3 +31,7 @@ Use this skill when the task is about a `.tst.*` file, TSTyche assertions or tes
 - Matcher signatures and semantics: [references/expect-api.md](references/expect-api.md)
 - Helpers, modifiers, and directives: [references/testing-and-directives.md](references/testing-and-directives.md)
 - Inference and compatibility design: [references/inference-and-compatibility.md](references/inference-and-compatibility.md)
+
+## If something is wrong
+
+Diagnose first. When a type test fails or an assertion behaves unexpectedly, load [tstyche-troubleshooting](../tstyche-troubleshooting/SKILL.md) and start with [references/type-test-failures.md](../tstyche-troubleshooting/references/type-test-failures.md) — matcher direction, directive scope, reduced-surface failures, and inference traps. Re-running the test before identifying the cause is the most common way small problems become hard-to-reverse rewrites.
